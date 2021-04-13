@@ -6,11 +6,34 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
+
+
+    
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+
+    <script type="text/javascript" class="init">
+
+
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                select: true
+            });
+        });
+
+
+
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
+    <div style="border-bottom:5pt solid;border-color:seagreen" class="fixed-top navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            @*<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -19,24 +42,25 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav">                    
+                    <li class="btn btn-lg btn-dark">@Html.ActionLink("Get All Team information", "Teams", "Home",new { @class="nav-link"})</li>
+                    
                 </ul>
-            </div>
+            </div>*@
+            <h1 class="text-center" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight:bolder;color:azure;">RUN GAMING TOURNAMENT TEAM LIST</h1>
         </div>
     </div>
-    <div class="container body-content">
+    <div style="background-color: ;padding:50px 0px 0px 20px;margin-left:5px;margin-right:10px" class="">
         @RenderBody()
         <hr />
-        <footer>
+        @*<footer class="fixed-bottom">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>
