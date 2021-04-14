@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TournamentManagementWebApp.DAL;
+using TournamentManagementWebApp.Models;
 
 namespace TournamentManagementWebApp.Controllers
 {
@@ -39,6 +40,25 @@ namespace TournamentManagementWebApp.Controllers
         {
             var teams = context.Teams.ToList();
             return View(teams);
+        }
+
+
+        public ActionResult SearchByNumber()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SearchByNumber(Team team)
+        {
+            var teamInfo = context.Teams.SingleOrDefault((x => x.PrimaryNumber == team.PrimaryNumber));
+            return View(teamInfo);
+        }
+
+        public JsonResult GetTeamByNumber(string number)
+        {
+            var team = context.Teams.SingleOrDefault((x => x.PrimaryNumber == number));
+            return Json(team,JsonRequestBehavior.AllowGet);
         }
     }
 }

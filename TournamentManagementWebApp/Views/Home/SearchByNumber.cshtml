@@ -1,0 +1,105 @@
+﻿@model TournamentManagementWebApp.Models.Team
+
+@{
+    ViewBag.Title = "SearchByNumber";
+}
+<br />
+<br />
+
+<div style="padding: 20px">
+    <h2 align="center" style="font-weight:bold;border-bottom:4pt solid;border-color:black;padding:20px;width:50%" class="btn btn-success btn-lg">Find Your Team Information</h2>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @*<input class="text-box single-line" id="PNumber" name="PNumber" type="text" value="9976941747" />*@
+
+        <div class="bg-dark" style="padding:25px 20px 25px 20px;border-radius:5pt">
+            <div class="" style="width:;">
+                <label class="form-label " style="color:azure;font-weight:bold;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">SEARCH BY PHONE NUMBER</label>
+                @Html.TextBoxFor(m => m.PrimaryNumber, new { @class = "form-control", @style = "width:50%", @value = "Enter the number you want to search" })
+            </div>
+            <br />
+            <input type="submit" id="btnSearch" class="btn btn-success btn-outline-light" value="Find Team" />
+
+
+            <br />
+            <br />
+            <br />
+            <table class="table table-striped table-responsive table-dark" id="myTable">
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TeamNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.TeamNumber)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TeamName)</td>
+                    <td>
+                        <button class="btn btn-dark btn-outline-light" style="color:seagreen;font-weight:bold">@Html.DisplayFor(modelItem => modelItem.TeamName)</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.PrimaryNumber)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.PrimaryNumber)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.SecondaryNumber)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.SecondaryNumber)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.PersonName)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.PersonName)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.MatchSlot)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.MatchSlot)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.MatchDate)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.MatchDate)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.WhatsAppGroup)
+                    </td>
+                    <td><a class="btn btn-success" href="@Html.DisplayFor(modelItem => modelItem.WhatsAppGroup)">Join WhatsApp Group</a></td>
+                </tr>               
+                
+            </table>
+        </div>
+
+
+    }
+</div>
+
+@*<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnSearch").change(function () {
+            $('#tablebody').empty();
+            var primaryNumber = $("#PNumber").val();
+            var json = { number, primaryNumber };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetTeamByNumber", "Home")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        $("#tablebody").append("<tr><td>" + value.TeamNumber + "</td><td>" + value.TeamName + "</td><td>" + value.PrimaryNumber + "</td><td>" + value.SecondaryNumber + "</td><td>" + value.PersonName + "</td><td>" + value.MatchSlot + "</td><td>" + value.MatchDate + "</td><td>" + value.WhatsAppGroup+"</td></tr>");
+                    });
+                }
+            });
+        });
+    });
+</script>*@
